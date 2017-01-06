@@ -1,0 +1,251 @@
+	/* 首页 活动主题页 */
+	
+	.index_con {
+		width: 100%;
+		height: 100%;
+		background: url(../images/index_img.jpg) no-repeat;
+		background-size: 100% 100%;
+	}
+	
+	.arrow_up {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 30%;
+	}
+	/* 向下箭头 */
+	
+	@-ms-keyframes arrow_up {
+		0% {
+			opacity: 1;
+			left: 0;
+			top: 18px;
+		}
+		100% {
+			opacity: 0.30;
+			left: 0;
+			top: 0;
+		}
+	}
+	
+	@-moz-keyframes arrow_up {
+		0% {
+			opacity: 1;
+			left: 0;
+			top: 18px;
+		}
+		100% {
+			opacity: 0.30;
+			left: 0;
+			top: 0;
+		}
+	}
+	
+	@-webkit-keyframes arrow_up {
+		0% {
+			opacity: 1;
+			left: 0;
+			top: 18px;
+		}
+		100% {
+			opacity: 0.30;
+			left: 0;
+			top: 0;
+		}
+	}
+	
+	@keyframes arrow_up {
+		0% {
+			opacity: 1;
+			left: 0;
+			top: 18px;
+		}
+		100% {
+			opacity: 0.30;
+			left: 0;
+			top: 0;
+		}
+	}
+	
+	.anim_arrow_up {
+		position: relative;
+		width: 28px;
+		height: 16px;
+		background: url(../images/arrow.png) no-repeat 0 0;
+		margin: 34% auto 0;
+		background-size: 100% auto;
+		-webkit-animation: arrow_up 0.5s infinite 0S;
+		-moz-animation: arrow_up 0.5s infinite 0S;
+		-ms-animation: arrow_up 0.5s infinite 0S;
+		animation: arrow_up 0.5s infinite 0S;
+	}
+	/* 第二页 红包领取页 */
+	
+	:-moz-placeholder {
+		/* Mozilla Firefox 4 to 18 */
+		color: rgba(255, 75, 39, 0.54);
+	}
+	
+	::-moz-placeholder {
+		/* Mozilla Firefox 19+ */
+		color: rgba(255, 75, 39, 0.54);
+	}
+	
+	input:-ms-input-placeholder,
+	textarea:-ms-input-placeholder {
+		color: rgba(255, 75, 39, 0.54);
+	}
+	
+	input::-webkit-input-placeholder {
+		color: rgba(255, 75, 39, 0.54);
+	}
+	
+	.indx_box {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background:url(../images/red_envelope_bg.jpg) no-repeat;
+		background-size: 100% 100%;
+	}
+	
+	.banquan {
+		position: absolute;
+		bottom: 4%;
+		left: 0;
+		width: 100%;
+		font-size: 12px;
+		color: rgba(255, 255, 255, 0.54);
+		text-align: center;
+	}
+	
+	.num {
+		position: absolute;
+		top: 58%;
+		left: 15%;
+		width: 70%;
+	}
+	
+	.num p {
+		padding: 16px 0 8px;
+		text-align: center;
+		font-size: 12px;
+		color: #ffc7bc;
+	}
+	
+	.num .inpBox {
+		width: 100%;
+		margin: 0 auto;
+		height: 40px;
+		box-sizing: border-box;
+		border-radius: 200px;
+		background: #fff;
+	}
+	
+	.num .inpBox input {
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		font-size: 16px;
+		color: #ff4b27;
+		text-align: center;
+		background: none;
+		border: none;
+		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+		-webkit-touch-callout：behavior
+	}
+	
+	.num .btn:link,
+	.num .btn:visited {
+		display: block;
+		margin-top: 10%;
+		width: 100%;
+		text-align: center;
+		font-size: 18px;
+		color: #ff4b27;
+		height: 40px;
+		line-height: 40px;
+		background: #ffce47;
+		text-decoration: none;
+		border-radius: 100px;
+		box-shadow: 0 0 10px #a24901;
+	}
+	
+	.popupBox {
+		position:absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, .8);
+	}
+	
+	.popupBox .conBox {
+		position: absolute;
+		top: 14%;
+		left: 0;
+		width: 100%;
+	}
+	
+	.popupBox .popup {
+		width: 100%;
+		position: relative;
+	}
+	
+	.popupBox .close {
+		width: 100%;
+	}
+	
+	.popupBox .close img {
+		width: 100%;
+	}
+	
+	.popupBox .bg {
+		width: 100%;
+		height: auto;
+	}
+	
+	.conNeirong {
+		padding-top: 116%;
+	}
+	
+	.textCon {
+		position: absolute;
+		top: 22%;
+		left: 0;
+		font-weight: bold;
+		width: 100%;
+		font-size: 32px;
+		color: #fff;
+		text-align: center;
+	}
+	
+	@media(max-width:320px) {
+		.textCon {
+			font-size: 26px;
+		}
+	}
+	
+	@media(min-width:321px) and ( max-width:375px) {
+		.textCon {
+			font-size: 30px;
+		}
+	}
+	
+	@media(min-width: 400px) {
+		.num {
+			top: 60%;
+		}
+		.num p {
+			padding: 16px 0 16px;
+			text-align: center;
+			font-size: 14px;
+			color: #ffc7bc;
+		}
+	}
+	
+	@media(min-width: 768px) {
+		.textCon {
+			font-size: 46px;
+		}
+	}
