@@ -1,0 +1,121 @@
+在Java7之前，switch只能支持 byte、short、char、int或者其对应的封装类以及Enum类型。在Java7中，呼吁很久的String支持也终于被加上了。
+ 
+例如，下面是一段switch中使用String的示例代码。
+ 
+public class Test {
+    public void test(String str) {
+        switch(str) {
+        case "abc":
+            System.out.println("abc");
+            break;
+        case "def":
+            System.out.println("def");
+            break;
+        default:
+            System.out.println("default");
+        }
+    }
+}
+
+在switch语句中，String的比较用的是String.equals，因此大家可以放心的使用。
+需要注意的是，传给switch的String变量不能为null，同时switch的case子句中使用的字符串也不能为null。
+为什么要有这些非null的限制呢？其实，我们只要将这段代码反汇编出来，看一下底层到底是如何实现的，就可以明白了。下面是汇编出来的代码。
+ 
+Compiled from "Test.java"
+public class Test extends java.lang.Object{
+public Test();
+  Code:
+   0:     aload_0
+   1:     invokespecial     #1; //Method java/lang/Object."":()V
+   4:     return
+ 
+public void test(java.lang.String);
+  Code:
+   0:     aload_1
+   1:     astore_2
+   2:     iconst_m1
+   3:     istore_3
+   4:     aload_2
+   5:     invokevirtual     #2; //Method java/lang/String.hashCode:()I
+   8:     lookupswitch{ //2
+          96354: 36;
+          99333: 50;
+          default: 61 }
+   36:     aload_2
+   37:     ldc     #3; //String abc
+   39:     invokevirtual     #4; //Method java/lang/String.equals:(Ljava/lang/Object;)Z
+   42:     ifeq     61
+   45:     iconst_0
+   46:     istore_3
+   47:     goto     61
+   50:     aload_2
+   51:     ldc     #5; //String def
+   53:     invokevirtual     #4; //Method java/lang/String.equals:(Ljava/lang/Object;)Z
+   56:     ifeq     61
+   59:     iconst_1
+   60:     istore_3
+   61:     iload_3
+   62:     lookupswitch{ //2
+          0: 88;
+          1: 99;
+          default: 110 }
+   88:     getstatic     #6; //Field java/lang/System.out:Ljava/io/PrintStream;
+   91:     ldc     #3; //String abc
+   93:     invokevirtual     #7; //Method java/io/PrintStream.println:(Ljava/lang/String;)V
+   96:     goto     118
+   99:     getstatic     #6; //Field java/lang/System.out:Ljava/io/PrintStream;
+   102:     ldc     #5; //String def
+   104:     invokevirtual     #7; //Method java/io/PrintStream.println:(Ljava/lang/String;)V
+   107:     goto     118
+   110:     getstatic     #6; //Field java/lang/System.out:Ljava/io/PrintStream;
+   113:     ldc     #8; //String default
+   115:     invokevirtual     #7; //Method java/io/PrintStream.println:(Ljava/lang/String;)V
+   118:     return
+}
+ 
+估计有些同学懒得看这些汇编，其实把上面的汇编代码用Java写出来就是下面的样子了。
+写到这里，大家应该能明白为什么不能用null了吧。
+ 
+public class Test {
+    public void test(String str) {
+        int i = -1;
+        switch(str.hashCode()) {
+        case 96354: // "abc".hashCode()
+            if (str.equals("abc")) {
+              i = 0;
+            }
+            break;
+        case 99333: // "def".hashCode()
+            if (str.equals("def")) {
+              i = 1;
+            }
+            break;
+        default:
+            break;
+        }
+
+        switch(i) {
+        case 0:
+            System.out.println("abc");
+            break;
+        case 1:
+            System.out.println("def");
+            break;
+        default:
+            System.out.println("default");
+        }
+    }
+}
+ 
+如果switch传入的null，那么在运行时对一个null对象调用hashCode方法会出现NullPointerException。
+如果switch的case写的是null，那么在编译时无法求出hashCode，因此在编译时就会报错了。
+ 
+switch支持String只是一个语法糖，由javac来负责生成相应的代码。底层的JVM在switch上并没有进行修改。
+ 
+参考
+http://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html
+ 
+如果switch传入的null，那么在运行时对一个null对象调用hashCode方法会出现NullPointerException。
+如果switch的case写的是null，那么在编译时无法求出hashCode，因此在编译时就会报错了。
+ 
+switch支持String只是一个语法糖，由javac来负责生成相应的代码。底层的JVM在switch上并没有进行修改。
