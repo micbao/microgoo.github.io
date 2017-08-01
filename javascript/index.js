@@ -4,6 +4,7 @@
 	});
 	
 	function init() {
-		console.log(location.href);
+		var config = $.getJSON("javascript/config.json");
+		console.log(config);
 	}
 })(jQuery);
