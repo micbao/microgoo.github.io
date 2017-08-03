@@ -26,5 +26,8 @@
 		resize();
 		$(window).on("resize",resize)
 		//var hash=(location.hash || '#home').substr(1);
+		$.getJSON("javascript/database/module.json",function(data, textStatus, jqXHR){
+			console.log(data);
+		});
 	}
 })(jQuery);	
