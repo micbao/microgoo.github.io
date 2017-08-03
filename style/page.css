@@ -1,0 +1,57 @@
+h1 {
+	font-size: 200%;
+	border-bottom: 1px solid #eee;
+}
+h2 {
+	font-size: 160%;
+}
+h3 {
+	font-size: 130%;
+}
+h4 {
+	font-size: 110%;
+}
+
+
+.docBox {
+	padding: 10px 18px;
+	background: #236696;
+	background: rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 5px;
+	margin-top: 14px;
+}
+
+.docBox p {
+	text-indent: 2em;
+}
+
+.docBox a.btn {
+	display: inline-block;
+	padding: 4px 10px;
+	background: #f3f3f3;
+	font-size: 0.8em;
+	color: #1968A0;
+	text-align: center;
+	text-decoration: none;
+	-webkit-border-radius: 4px;
+}
+
+.docBox a.btn:hover {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+code {
+	/*font-family: courier;*/
+	font-family: consolas;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+code p {
+	margin: 0;
+}
+
+.hidden {
+	visibility: hidden;
+}
