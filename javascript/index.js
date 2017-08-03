@@ -1,11 +1,4 @@
 (function($) {
-	var urlHash = {
-		'doc': './doc/index.html',
-		'demo': './demo/index.html',
-		'download': './download.html',
-		'about': './about.html'
-	}
-
 	$(document).ready(function() {
 		init();
 	});
@@ -27,7 +20,11 @@
 		$(window).on("resize",resize)
 		//var hash=(location.hash || '#home').substr(1);
 		$.getJSON("javascript/database/module.json",function(data, textStatus, jqXHR){
-			console.log(data);
+			var content = $("#nav-ul");
+			$.each(data, function(i,o) {
+				var item  = $("<li data-key="+o.data+"><a href='javascript:void(0)'>"+o.name+"</a></li>")
+				content.append(item);
+			});
 		});
 	}
 })(jQuery);	
